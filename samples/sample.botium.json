@@ -1,0 +1,15 @@
+{
+  "botium": {
+    "Capabilities": {
+      "PROJECTNAME": "Botium Project Twilio SMS",
+      "CONTAINERMODE": "twilio-ivr",
+      "TWILIO_IVR_ACCOUNT_SID": "...",
+      "TWILIO_IVR_AUTH_TOKEN": "...",
+      "TWILIO_IVR_FROM": "...",
+      "TWILIO_IVR_TO": "...",
+      "TWILIO_IVR_REDISURL" : "...",
+      "TWILIO_IVR_PUBLICURL": "...",
+      "TWILIO_IVR_LANGUAGE_CODE": "en-US"
+    }
+  }
+}

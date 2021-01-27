@@ -1,0 +1,48 @@
+{
+  "name": "botium-connector-twilio-sms",
+  "version": "0.0.1",
+  "description": "Botium Connector for SMS Messaging (with Twilio)",
+  "scripts": {
+    "build": "npm run eslint && rollup -c && cp language-tags.csv dist",
+    "eslint": "eslint index.js src/**/*.js bin/**/*.js",
+    "eslint-fix": "eslint --fix index.js src/**/*.js bin/**/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codeforequity-at/botium-connector-twilio-sms.git"
+  },
+  "author": "Botium GmbH",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/codeforequity-at/botium-core/issues"
+  },
+  "homepage": "https://www.botium.ai",
+  "devDependencies": {
+    "@babel/core": "^7.12.1",
+    "@babel/node": "^7.12.1",
+    "@babel/plugin-transform-runtime": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "botium-core": "https://github.com/codeforequity-at/botium-core.git#develop",
+    "eslint": "^7.11.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "rollup": "^2.31.0",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.12.1",
+    "debug": "^4.2.0",
+    "express": "^4.17.1",
+    "ioredis": "^4.17.3",
+    "lodash": "^4.17.20",
+    "node-fetch": "^2.6.1",
+    "twilio": "^3.50.0",
+    "yargs": "^16.1.0"
+  }
+}
