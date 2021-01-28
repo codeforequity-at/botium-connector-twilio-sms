@@ -1,8 +1,7 @@
-caffe
+caffeorder
 
 #me
 Some text to start the conversation
-
 
 #bot
 Welcome to our automated ordering system. Please reply with one of the following: latte, cappuccino, americano, cortado, or cold brew.

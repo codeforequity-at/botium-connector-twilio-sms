@@ -48,28 +48,14 @@ const buildRedisHandlers = async (redisurl, topicBase) => {
 
   const redisSubscriber = new Redis(redisurl)
   redisSubscriber.on('connect', () => {
-    debug(`Redis subscriber connected to ${JSON.stringify(redisurl || 'default')}`)
+    console.log(`Redis subscriber connected to ${JSON.stringify(redisurl || 'default')}`)
   })
   const redisClient = new Redis(redisurl)
   redisClient.on('connect', () => {
-    debug(`Redis client connected to ${JSON.stringify(redisurl || 'default')}`)
+    console.log(`Redis client connected to ${JSON.stringify(redisurl || 'default')}`)
   })
 
-  const sessionStore = {
-    get: async (sid) => {
-      const content = await redisClient.get(sid)
-      if (content) return JSON.parse(content)
-    },
-    set: async (sid, data) => {
-      await redisClient.set(sid, JSON.stringify(data))
-    },
-    delete: async (sid) => {
-      await redisClient.del(sid)
-    }
-  }
-
   return {
-    sessionStore,
     disconnect: async () => {
       redisSubscriber.disconnect()
       redisClient.disconnect()

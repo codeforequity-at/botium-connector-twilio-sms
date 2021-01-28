@@ -15,5 +15,8 @@
     "mocha": "latest",
     "botium-bindings": "latest",
     "botium-connector-twilio-sms": "../"
+  },
+  "dependencies": {
+    "why-is-node-running": "^2.2.0"
   }
 }

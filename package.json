@@ -38,11 +38,14 @@
   "dependencies": {
     "@babel/runtime": "^7.12.1",
     "debug": "^4.2.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "ioredis": "^4.17.3",
     "lodash": "^4.17.20",
     "node-fetch": "^2.6.1",
     "twilio": "^3.50.0",
+    "twilio-cli": "^2.16.0",
+    "why-is-node-running": "^2.2.0",
     "yargs": "^16.1.0"
   }
 }
