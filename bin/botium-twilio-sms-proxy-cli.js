@@ -46,7 +46,7 @@ yargsCmd.usage('Botium Twilio SMS Proxy\n\nUsage: $0 [options]') // eslint-disab
         .option('port', {
           describe: 'Local port the proxy is listening to (also read from env variable "BOTIUM_TWILIO_SMS_INBOUNDPORT")',
           number: true,
-          default: process.env.BOTIUM_TWILIO_SMS_INBOUNDPORT || 5001
+          default: process.env.BOTIUM_TWILIO_SMS_INBOUNDPORT || 5002
         })
         .option('redisurl', {
           describe: 'Redis connection url, ex "redis://localhost:6379" (also read from env variable "BOTIUM_TWILIO_SMS_REDISURL")',
