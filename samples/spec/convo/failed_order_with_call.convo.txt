@@ -1,0 +1,19 @@
+failed order with call
+
+#me
+Hello!
+
+#bot
+Welcome to our automated ordering system. Please reply with one of the following: latte, cappuccino, americano, cortado, or cold brew.
+
+#me
+espresso
+
+#bot
+We want to make sure you get your coffee, even if we're not quite sure how you take it. We'll connect you to a barista directly - is now a good time to call?
+
+#me
+yes
+
+#bot
+Okay, we are calling you. Just wait a minute.

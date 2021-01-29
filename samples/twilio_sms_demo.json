@@ -1,0 +1,249 @@
+{
+  "description": "Barry the Barista-Bot",
+  "states": [
+    {
+      "name": "Trigger",
+      "type": "trigger",
+      "transitions": [
+        {
+          "next": "send_and_reply_choose_cafe",
+          "event": "incomingMessage"
+        },
+        {
+          "event": "incomingCall"
+        },
+        {
+          "event": "incomingRequest"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": 20,
+          "y": -170
+        }
+      }
+    },
+    {
+      "name": "send_and_reply_choose_cafe",
+      "type": "send-and-wait-for-reply",
+      "transitions": [
+        {
+          "next": "split_order",
+          "event": "incomingMessage"
+        },
+        {
+          "event": "timeout"
+        },
+        {
+          "event": "deliveryFailure"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": -20,
+          "y": -20
+        },
+        "from": "{{flow.channel.address}}",
+        "body": "Welcome to our automated ordering system. Please reply with one of the following: latte, cappuccino, americano, cortado, or cold brew.",
+        "timeout": "3600"
+      }
+    },
+    {
+      "name": "split_order",
+      "type": "split-based-on",
+      "transitions": [
+        {
+          "next": "send_and_reply_handover",
+          "event": "noMatch"
+        },
+        {
+          "next": "send_order_received",
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "latte, cappuccino, americano, cortado, cold brew",
+              "arguments": [
+                "{{widgets.send_and_reply_choose_cafe.inbound.Body}}"
+              ],
+              "type": "matches_any_of",
+              "value": "latte, cappuccino, americano, cortado, cold brew"
+            }
+          ]
+        }
+      ],
+      "properties": {
+        "input": "{{widgets.send_and_reply_choose_cafe.inbound.Body}}",
+        "offset": {
+          "x": -420,
+          "y": 300
+        }
+      }
+    },
+    {
+      "name": "send_and_reply_handover",
+      "type": "send-and-wait-for-reply",
+      "transitions": [
+        {
+          "next": "split_confirm",
+          "event": "incomingMessage"
+        },
+        {
+          "event": "timeout"
+        },
+        {
+          "event": "deliveryFailure"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": -590,
+          "y": 580
+        },
+        "from": "{{flow.channel.address}}",
+        "body": "We want to make sure you get your coffee, even if we're not quite sure how you take it. We'll connect you to a barista directly - is now a good time to call?",
+        "timeout": "180"
+      }
+    },
+    {
+      "name": "split_confirm",
+      "type": "split-based-on",
+      "transitions": [
+        {
+          "event": "noMatch"
+        },
+        {
+          "next": "send_call",
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "y, yes",
+              "arguments": [
+                "{{widgets.send_and_reply_handover.inbound.Body}}"
+              ],
+              "type": "matches_any_of",
+              "value": "y, yes"
+            }
+          ]
+        },
+        {
+          "next": "send_no_call",
+          "event": "match",
+          "conditions": [
+            {
+              "friendly_name": "If value matches_any_of n, no",
+              "arguments": [
+                "{{widgets.send_and_reply_handover.inbound.Body}}"
+              ],
+              "type": "matches_any_of",
+              "value": "n, no"
+            }
+          ]
+        }
+      ],
+      "properties": {
+        "input": "{{widgets.send_and_reply_handover.inbound.Body}}",
+        "offset": {
+          "x": -770,
+          "y": 860
+        }
+      }
+    },
+    {
+      "name": "send_call",
+      "type": "send-message",
+      "transitions": [
+        {
+          "event": "sent"
+        },
+        {
+          "event": "failed"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": -1030,
+          "y": 1150
+        },
+        "service": "{{trigger.message.InstanceSid}}",
+        "channel": "{{trigger.message.ChannelSid}}",
+        "from": "{{flow.channel.address}}",
+        "to": "{{contact.channel.address}}",
+        "body": "Okay, we are calling you. Just wait a minute."
+      }
+    },
+    {
+      "name": "send_order_received",
+      "type": "send-message",
+      "transitions": [
+        {
+          "next": "send_goodbye",
+          "event": "sent"
+        },
+        {
+          "event": "failed"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": -160,
+          "y": 580
+        },
+        "service": "{{trigger.message.InstanceSid}}",
+        "channel": "{{trigger.message.ChannelSid}}",
+        "from": "{{flow.channel.address}}",
+        "to": "{{contact.channel.address}}",
+        "body": "All good, we received your order."
+      }
+    },
+    {
+      "name": "send_no_call",
+      "type": "send-message",
+      "transitions": [
+        {
+          "event": "sent"
+        },
+        {
+          "event": "failed"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": -490,
+          "y": 1150
+        },
+        "service": "{{trigger.message.InstanceSid}}",
+        "channel": "{{trigger.message.ChannelSid}}",
+        "from": "{{flow.channel.address}}",
+        "to": "{{contact.channel.address}}",
+        "body": "We are very sad we could not help you. If you changed your mind, dont hesitate to come back!"
+      }
+    },
+    {
+      "name": "send_goodbye",
+      "type": "send-message",
+      "transitions": [
+        {
+          "event": "sent"
+        },
+        {
+          "event": "failed"
+        }
+      ],
+      "properties": {
+        "offset": {
+          "x": -160,
+          "y": 850
+        },
+        "service": "{{trigger.message.InstanceSid}}",
+        "channel": "{{trigger.message.ChannelSid}}",
+        "from": "{{flow.channel.address}}",
+        "to": "{{contact.channel.address}}",
+        "body": "Thank you! See you soon!"
+      }
+    }
+  ],
+  "initial_state": "Trigger",
+  "flags": {
+    "allow_concurrent_calls": true
+  }
+}

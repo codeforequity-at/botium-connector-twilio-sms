@@ -42,7 +42,7 @@ Twilio API is not free, see pricing [here](https://www.twilio.com/voice/pricing)
 * (optional) a __Redis__ instance (Cloud hosted free tier for example from [redislabs](https://redislabs.com/) will do as a starter)
 * __Twilio Account__ (See trial account limitation of Twilio [here](https://www.twilio.com/docs/usage/tutorials/how-to-use-your-free-trial-account#trial-account-restrictions-and-limitations)) 
     * [Note accountSid and authToken](https://www.twilio.com/docs/voice/quickstart/node#replace-the-placeholder-credential-values) 
-* __[Purchased](https://www.twilio.com/docs/voice/quickstart/node#sign-up-for-twilio-and-get-a-phone-number), or [verified](https://www.twilio.com/docs/usage/tutorials/how-to-use-your-free-trial-account#verify-your-personal-phone-number) Twilio phone number__ 
+* __[Purchased](https://www.twilio.com/docs/voice/quickstart/node#sign-up-for-twilio-and-get-a-phone-number), or [verified](https://www.twilio.com/docs/usage/tutorials/how-to-use-your-free-trial-account#verify-your-personal-phone-number) Twilio phone number with SMS capabilities enabled__ 
 * A __project directory__ on your workstation to hold test cases and Botium configuration    
 
 ## Install Botium and Twilio SMS Connector

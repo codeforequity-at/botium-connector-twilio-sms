@@ -1,16 +1,19 @@
-caffeorder
+failed order no call
 
 #me
-Some text to start the conversation
+Hello!
 
 #bot
 Welcome to our automated ordering system. Please reply with one of the following: latte, cappuccino, americano, cortado, or cold brew.
 
 #me
-Someting other as expected
+espresso
 
 #bot
 We want to make sure you get your coffee, even if we're not quite sure how you take it. We'll connect you to a barista directly - is now a good time to call?
 
 #me
-No, dont call me pls!
+no
+
+#bot
+We are very sad we could not help you. If you changed your mind, dont hesitate to come back!

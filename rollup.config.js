@@ -6,12 +6,12 @@ export default {
   input: 'index.js',
   output: [
     {
-      file: 'dist/botium-connector-twilio-ivr-es.js',
+      file: 'dist/botium-connector-twilio-sms-es.js',
       format: 'es',
       sourcemap: true
     },
     {
-      file: 'dist/botium-connector-twilio-ivr-cjs.js',
+      file: 'dist/botium-connector-twilio-sms-cjs.js',
       format: 'cjs',
       sourcemap: true
     }

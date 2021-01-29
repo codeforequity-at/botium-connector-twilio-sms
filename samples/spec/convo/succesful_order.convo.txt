@@ -1,0 +1,16 @@
+asuccesful order
+
+#me
+Hello!
+
+#bot
+Welcome to our automated ordering system. Please reply with one of the following: latte, cappuccino, americano, cortado, or cold brew.
+
+#me
+americano
+
+#bot
+All good, we received your order.
+
+#bot
+Thank you! See you soon!
