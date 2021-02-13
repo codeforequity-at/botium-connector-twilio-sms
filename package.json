@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Botium Connector for SMS Messaging (with Twilio)",
   "scripts": {
-    "build": "npm run eslint && rollup -c && cp language-tags.csv dist",
+    "build": "npm run eslint && rollup -c",
     "eslint": "eslint index.js src/**/*.js bin/**/*.js",
     "eslint-fix": "eslint --fix index.js src/**/*.js bin/**/*.js"
   },
