@@ -2,7 +2,7 @@
 
 [![NPM](https://nodei.co/npm/botium-connector-twilio-sms.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/botium-connector-twilio-sms/)
 
-[![Codeship Status for codeforequity-at/botium-connector-twilio-sms](https://app.codeship.com/projects/4500048a-b36f-4108-98ee-6fbf668e4286/status?branch=master)](https://app.codeship.com/projects/428350)
+[![Codeship Status for codeforequity-at/botium-connector-twilio-sms](https://app.codeship.com/projects/4500048a-b36f-4108-98ee-6fbf668e4286/status?branch=main)](https://app.codeship.com/projects/428350)
 [![npm version](https://badge.fury.io/js/botium-connector-twilio-sms.svg)](https://badge.fury.io/js/botium-connector-twilio-sms)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
 
