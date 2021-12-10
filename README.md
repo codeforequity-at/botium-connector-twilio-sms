@@ -27,8 +27,10 @@ To receive messages from Twilio API a public endpoint is required.
   * Endpoint is provided by the Botium Twilio Webhook Proxy included in this module. Redis is required for communication between Connector and Box.
 * This endpoint has to be public:
   * If used from [Botium Box](https://www.botium.at), then no addititional steps are required.
-  * If the server is not public, then the easiest way to use Twilio cli (which uses ngrok internally) to make it public: ```twilio phone-numbers:update "<<TELEPHONE NUMBER TO LISTEN>>" --sms-url="http://localhost:<<PORT FROM PROXY OR CONNECTOR>>/sms"```
-  * If you use Botium Twilio Webhook Proxy, then it displays the complete command for Twilio cli
+  * If the server is not public, then the easiest way to use Twilio cli (which uses ngrok internally) to make it public.
+    * in case of integrated endpoint: ```twilio phone-numbers:update "<<TWILIO_SMS_FROM>>" --sms-url="http://localhost:<<TWILIO_SMS_INBOUNDPORT>><<TWILIO_SMS_INBOUNDENDPOINT>>/sms"``` 
+    * If you use Botium Twilio Webhook Proxy, then it displays the complete command for Twilio cli
+  * Or use ngrok: ```ngrok http <<TWILIO_SMS_INBOUNDPORT>>```     
 * This endpoint has to be registered in Twilio:
   * If you use Twilio cli to make endpoint public, then it registers the endpoint.
   * You can use Twilio cli just for registering ```twilio phone-numbers:update [PN sid or E.164] --sms-url http://url``` ([see more](https://www.twilio.com/docs/twilio-cli/general-usage#webhooks)) 
@@ -160,3 +162,9 @@ Redis Url and base topic name for Redis subscription topic.
 The default url for local redis is _redis://localhost:6379_
 
 `TWILIO_SMS_INBOUNDENDPOINT` is optional.
+
+## Changelog
+
+### 0.1.0
+ - Twilio cli is removed from dependencies. (It is a heavy but optional package)
+ - All version numbers updated.
