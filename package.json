@@ -1,6 +1,6 @@
 {
   "name": "botium-connector-twilio-sms",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Botium Connector for SMS Messaging (with Twilio)",
   "scripts": {
     "build": "npm run eslint && rollup -c && cp logo.png dist",
