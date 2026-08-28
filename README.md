@@ -167,7 +167,6 @@ The default url for local redis is _redis://localhost:6379_
 
 ### 0.1.1
  - Twilio SDK updated to 6.1.0.
- - botium-core pinned to 1.15.15.
  - Unused dependencies `node-fetch` and `dotenv` removed.
  - Proxy CLI now uses the configured `--port` option and answers Twilio webhooks with empty TwiML.
 
