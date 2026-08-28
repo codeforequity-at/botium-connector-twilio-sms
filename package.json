@@ -1,6 +1,6 @@
 {
   "name": "botium-connector-twilio-sms",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Botium Connector for SMS Messaging (with Twilio)",
   "scripts": {
     "build": "npm run eslint && rollup -c && cp logo.png dist",
@@ -37,6 +37,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.16.3",
+    "axios": "^1.20.0",
     "debug": "^4.3.3",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",

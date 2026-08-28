@@ -14,10 +14,15 @@ const setupEndpoints = ({ app, endpointBase, middleware, processInboundEvent }) 
 
   app.post(endpointBase + 'sms', ...(middleware || []), async (req, res) => {
     debug('Event received on \'sms\' webhook')
-    processInboundEvent({
-      type: EVENT_BOT_SAYS,
-      ...req.body
-    })
+    try {
+      await processInboundEvent({
+        type: EVENT_BOT_SAYS,
+        ...req.body
+      })
+    } catch (err) {
+      debug(`Error while processing inbound event: ${err.message}`)
+    }
+    res.type('text/xml').status(200).send('<Response></Response>')
   })
 }
 
@@ -40,6 +45,7 @@ const startProxy = async ({ port, endpointBase, processInboundEvent }) => {
       console.log(`Botium Twilio Inbound Messages endpoint available at http://127.0.0.1:${port}${endpointBase}`)
       resolve({ proxy })
     })
+    proxy.on('error', (err) => reject(err))
   })
 }
 

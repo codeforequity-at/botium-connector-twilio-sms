@@ -54,17 +54,16 @@ yargsCmd.usage('Botium Twilio SMS Proxy\n\nUsage: $0 [options]') // eslint-disab
         })
     },
     handler: async (argv) => {
-      const { sessionStore, processInboundEvent } = await buildRedisHandlers(argv.redisurl)
+      const { processInboundEvent } = await buildRedisHandlers(argv.redisurl)
       await startProxy({
-        port: argv.inboundport,
+        port: argv.port,
         endpointBase: '/',
-        processInboundEvent,
-        sessionStore
+        processInboundEvent
       })
       // wait for redis connection succesful message
       setTimeout(() => {
         console.log('\nConnect proxy to Twilio with Twilio CLI (Optional):')
-        console.log(`twilio phone-numbers:update "${process.env.BOTIUM_TWILIO_SMS_FROM || process.env.TWILIO_SMS_FROM || '+<TWILIO-TELEPHONE-NUMBER>'}" --sms-url="http://localhost:${argv.inboundport}/sms"`)
+        console.log(`twilio phone-numbers:update "${process.env.BOTIUM_TWILIO_SMS_FROM || process.env.TWILIO_SMS_FROM || '+<TWILIO-TELEPHONE-NUMBER>'}" --sms-url="http://localhost:${argv.port}/sms"`)
       }, 500)
     }
   }))
@@ -72,6 +71,6 @@ yargsCmd.usage('Botium Twilio SMS Proxy\n\nUsage: $0 [options]') // eslint-disab
     alias: 'v',
     type: 'boolean',
     describe: 'Enable verbose output (also read from env variable "BOTIUM_TWILIO_SMS_VERBOSE" - "1" means verbose)',
-    default: process.env.BOTIUM_TWILIO_SMS_REDISURL || 'redis://localhost:6379'
+    default: process.env.BOTIUM_TWILIO_SMS_VERBOSE === '1'
   })
   .argv

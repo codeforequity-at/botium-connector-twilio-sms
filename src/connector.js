@@ -77,7 +77,7 @@ class BotiumConnectorTwilioSms {
     }
     return this.client.messages
       .create(opts)
-      .then(message => debug(`Sending message. "${JSON.stringify(opts)}"`))
+      .then(() => debug(`Sending message. "${JSON.stringify(opts)}"`))
       .catch(err => {
         debug(`Failed to send message. Parameters may be incorrect: "${JSON.stringify(opts)}" Error: "${err}"`)
         throw err

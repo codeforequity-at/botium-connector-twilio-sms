@@ -165,6 +165,10 @@ The default url for local redis is _redis://localhost:6379_
 
 ## Changelog
 
+### 0.1.1
+ - Axios dependency added and updated to 1.20.0.
+ - Proxy CLI now uses the configured `--port` option and answers Twilio webhooks with empty TwiML.
+
 ### 0.1.0
  - Twilio cli is removed from dependencies. (It is a heavy but optional package)
  - All version numbers updated.
